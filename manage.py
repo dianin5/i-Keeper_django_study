@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 """Django's command-line utility for administrative tasks."""
+# 사이트 관리를 도와주는 역할을 수행합니다.
 import os
 import sys
 

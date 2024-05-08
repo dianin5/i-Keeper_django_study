@@ -1,3 +1,4 @@
+# 웹사이트 설정이 있는 파일입니다.
 """
 Django settings for mysite project.
 
@@ -25,8 +26,8 @@ SECRET_KEY = 'django-insecure-88t%5k^75!296vhu4ch^4(h__@!d@e+0m#2&m%r42ih=f6pclw
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+# ALLOWED_HOSTS 수정
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 # Application definition
 
@@ -104,8 +105,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
+# 타임존 수정 
+TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
 
@@ -115,7 +116,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+# 파일 끝 부분에 해당 내용 추가 
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'static'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
