@@ -1,26 +1,42 @@
 {% load static %}
 <html>
     <head>
-        <title>디포전 이틀 남은 날다람쥐의 절규</title>
+        <title>디포전 떨어진 날다람쥐의 절규</title>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-    </head>
-    <body>
-        <div class="page-header">
-            {% if user.is_authenticated %}
-    <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-{% endif %}
-            <h1><a href="/">살고싶으면 발버둥쳐라 날다람쥐여</a></h1>
-        </div>
-        <div class="content container">
-            <div class="row">
-                <div class="col-md-8">
+        <head>
+            <script>
+                function logout_form(){
+                    document.getElementById('logout-form').submit();
+                }
+            </script>
+        </head> 
+        
+        
+        <body>
+            <div class="page-header">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+                    <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
+                    <p class="top-menu">Hello {{ user.username }} <small>(<a href="#" onclick="return logout_form()">Log out</a>)</small></p>
+                    <form id="logout-form" action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" value="로그아웃" />
+                    </form>
+        
+                {% else %}
+                     <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
+                {% endif %}
+                <h1><a href="/">살려다오</a></h1>
+            </div>
+            <div class="content container">
+                <div class="row">
+                    <div class="col-md-8">
                     {% block content %}
                     {% endblock %}
+                    </div>
                 </div>
             </div>
-        </div>
-    </body>
-</html>
+        </body>
